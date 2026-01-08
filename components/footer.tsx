@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Linkedin, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
@@ -17,10 +19,20 @@ export function Footer() {
   ]
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/alarion-hospitality", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/alarionhospitality", label: "Instagram" },
+    { icon: Twitter, href: "https://twitter.com/alarionhotels", label: "Twitter" },
   ]
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault()
+      const element = document.getElementById(href.slice(1))
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    }
+  }
 
   return (
     <footer className="bg-navy border-t border-gold/20">
@@ -58,13 +70,21 @@ export function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="text-ivory/80 hover:text-gold transition-colors text-sm">
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="text-ivory/80 hover:text-gold transition-colors text-sm"
+                  >
                     {link.label}
                   </a>
                 </li>
               ))}
               <li>
-                <a href="#careers" className="text-ivory/80 hover:text-gold transition-colors text-sm">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleScroll(e, "#contact")}
+                  className="text-ivory/80 hover:text-gold transition-colors text-sm"
+                >
                   Careers
                 </a>
               </li>
@@ -131,6 +151,8 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-gold/80 hover:bg-gold/10 hover:border-gold transition-all"
                 >

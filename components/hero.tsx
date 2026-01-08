@@ -5,11 +5,22 @@ import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Hero() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img src="/luxury-5-star-hotel-lobby-with-elegant-design-and-.jpg" alt="Luxury Hotel" className="w-full h-full object-cover" />
+        <img
+          src="/luxury-5-star-hotel-lobby-with-elegant-design-and-.jpg"
+          alt="Luxury Hotel"
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/80" />
       </div>
 
@@ -46,12 +57,17 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.9 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Button size="lg" className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 text-base tracking-wider">
+          <Button
+            size="lg"
+            onClick={() => scrollToSection("portfolio")}
+            className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 text-base tracking-wider"
+          >
             Explore Our Portfolio
           </Button>
           <Button
             size="lg"
             variant="outline"
+            onClick={() => scrollToSection("contact")}
             className="border-2 border-ivory text-ivory hover:bg-ivory hover:text-navy px-8 py-6 text-base tracking-wider bg-transparent"
           >
             Contact Us
@@ -59,16 +75,17 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}>
-          <ChevronDown className="text-gold w-8 h-8" />
-        </motion.div>
+        <button onClick={() => scrollToSection("about")} aria-label="Scroll to content" className="cursor-pointer">
+          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}>
+            <ChevronDown className="text-gold w-8 h-8" />
+          </motion.div>
+        </button>
       </motion.div>
     </section>
   )

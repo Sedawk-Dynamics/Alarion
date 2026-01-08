@@ -31,6 +31,13 @@ export function Portfolio() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+  const scrollToContact = () => {
+    const element = document.getElementById("contact")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
   return (
     <section id="portfolio" className="py-24 lg:py-32 bg-navy">
       <div className="container mx-auto px-6 lg:px-12">
@@ -82,7 +89,11 @@ export function Portfolio() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mt-12"
         >
-          <Button size="lg" className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 text-base tracking-wider">
+          <Button
+            size="lg"
+            onClick={scrollToContact}
+            className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 text-base tracking-wider"
+          >
             View All Properties
           </Button>
         </motion.div>
