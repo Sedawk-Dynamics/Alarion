@@ -13,6 +13,7 @@ export function Footer() {
     { href: "#hero", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#portfolio", label: "Portfolio" },
+    { href: "#upcoming-projects", label: "Upcoming Projects" },
     { href: "#investor", label: "Investors" },
     { href: "#sustainability", label: "Sustainability" },
     { href: "#contact", label: "Contact" },

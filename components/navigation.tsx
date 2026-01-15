@@ -22,6 +22,7 @@ export function Navigation() {
   const links = [
     { href: "#about", label: "About" },
     { href: "#portfolio", label: "Portfolio" },
+    { href: "#upcoming-projects", label: "Upcoming Projects" },
     { href: "#investor", label: "Investor Relations" },
     { href: "#sustainability", label: "Sustainability" },
     { href: "#contact", label: "Contact" },

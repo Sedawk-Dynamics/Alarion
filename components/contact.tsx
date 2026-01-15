@@ -19,37 +19,10 @@ export function Contact() {
     message: "",
   })
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault()
-
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-
-    const data = await res.json()
-
-    if (!res.ok) {
-      alert(data.error || "Failed to send message")
-      return
-    }
-
-    alert("Message sent successfully!")
-
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    })
-  } catch (err) {
-    console.error(err)
-    alert("Something went wrong")
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log("Form submitted:", formData)
   }
-}
-
 
   return (
     <section id="contact" className="py-24 lg:py-32 bg-navy">

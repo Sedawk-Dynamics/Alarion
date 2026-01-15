@@ -3,6 +3,7 @@
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
 import { Portfolio } from "@/components/portfolio"
+import { UpcomingProjects } from "@/components/upcoming-projects"
 import { KeyStrengths } from "@/components/key-strengths"
 import { InvestorFocus } from "@/components/investor-focus"
 import { Sustainability } from "@/components/sustainability"
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <About />
       <Portfolio />
+      <UpcomingProjects />
       <KeyStrengths />
       <InvestorFocus />
       <Sustainability />
